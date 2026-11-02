@@ -46,6 +46,14 @@ flowchart LR
         VALIDATE --> UI
     end
 
+    subgraph Week 4 evaluation
+        GOLDEN[40-case golden dataset] --> RUNNER[evaluations/run_baseline.py]
+        RUNNER --> PIPE
+        RUNNER --> RESULTS[Baseline results and traces]
+        RESULTS --> REVIEW[Human review worksheets]
+        REVIEW --> TAXONOMY[Failure taxonomy and reports]
+    end
+
     ENV[.env secrets] -.-> PC
     ENV -.-> LLM
 ```
@@ -159,6 +167,20 @@ pytest
 ```
 
 The tests cover document loading, chunking, indexing behavior, BM25 and hybrid retrieval, reranking, the RAG pipeline, the Streamlit app, and the committed sample corpus.
+
+## Week 4 evaluation workflow
+
+The Week 4 evaluation was completed in staged steps against the committed synthetic sample corpus. The frozen 40-question dataset contains 37 `VERIFIED` cases and 3 `NEEDS_REVIEW` cases. Evaluation artifacts are kept under [`evaluations/`](evaluations/).
+
+1. **Ground-truth validation.** The 40 draft questions were checked against the original policy documents. Policy IDs and question IDs were preserved, unsupported expectations were flagged for review, and the validated dataset was saved as [`golden_dataset.csv`](evaluations/golden_dataset.csv).
+2. **Baseline runner.** The runner loads the project-root `.env` by explicit path, passes the selected policy ID, and uses hybrid retrieval, section-aware chunking, RRF fusion, CrossEncoder reranking, up to 10 candidates, and the top 5 passages before Nebius Gemma generation. It records answers, retrieved chunks, citations, missing information, latency, errors, and deterministic policy/citation checks.
+3. **Baseline execution.** All 40 questions were executed sequentially. The baseline recorded 40/40 executions, 40/40 policy-isolated results, and 84/84 valid citation references. These deterministic checks do not establish semantic answer correctness or citation support; those remain human-review judgments.
+4. **Diagnosis and observability.** The three smoke failures were traced through retrieval, reranking, source-label mapping, raw model output, citation validation, and fallback behavior. Local diagnostic traces identified citation suppression and an ambiguous liability-deductible interpretation without changing the Pinecone index or source documents.
+5. **Hybrid identity correction.** Equivalent semantic and BM25 chunks were given a verified canonical identity for RRF deduplication while preserving original chunk IDs, scores, policy filtering, and citation mappings.
+6. **Human review preparation.** Review worksheets, provisional ledgers, failure taxonomy, and review guidance were created. Provisional labels are not independently confirmed human labels, and the three ambiguous golden cases remain identified for review.
+7. **Targeted answer-scope improvement.** A question-driven guard removes unsolicited deductible statements from questions that do not ask for deductible information. Generic and coverage-specific deductible behavior, citation validation, policy isolation, and uncertainty handling are preserved. The focused smoke rerun of AC-003 through AC-006 improved scope compliance from 0/4 to 4/4, with 5/5 citation references valid and no recorded errors. The full 40-case evaluation was not rerun after this change.
+
+Key reports include [`baseline_report.md`](evaluations/reports/baseline_report.md), [`failure_analysis.md`](evaluations/reports/failure_analysis.md), and [`answer_scope_before_after.md`](evaluations/reports/answer_scope_before_after.md). Human semantic correctness, groundedness, and citation-support judgments remain separate from deterministic metrics and provisional review signals.
 
 ## Data and security notes
 

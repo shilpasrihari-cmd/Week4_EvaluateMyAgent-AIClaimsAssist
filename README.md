@@ -1,8 +1,10 @@
 # AIClaimsAssist
 
-AIClaimsAssist is a grounded knowledge assistant for auto-insurance claims and policy documents. It combines document extraction, configurable chunking, keyword and semantic retrieval, optional cross-encoder reranking, and citation-aware answer generation in a Streamlit interface.
+AIClaimsAssist is a Week 4 evaluation project for a grounded knowledge assistant for auto-insurance claims and policy documents. It combines the RAG application with a repeatable evaluation workflow for golden-data validation, baseline measurement, failure analysis, human review, and targeted improvements. The application itself uses document extraction, configurable chunking, keyword and semantic retrieval, optional cross-encoder reranking, and citation-aware answer generation in a Streamlit interface.
 
 The application is designed to answer questions for a selected policy while keeping the answer tied to retrieved evidence. When the evidence is missing or ambiguous, the pipeline reports that limitation instead of inventing coverage details.
+
+The evaluation work measures retrieval execution, policy isolation, citation-reference validity, latency, answer scope, and failure patterns. Semantic correctness, groundedness, and citation support remain separate human-review decisions rather than claims implied by deterministic pipeline metrics.
 
 ## What it does
 
@@ -15,6 +17,10 @@ The application is designed to answer questions for a selected policy while keep
 - Generate answers through a Nebius OpenAI-compatible endpoint.
 - Validate source citations and show the supporting passages in the UI.
 - Surface missing or uncertain information to the user.
+- Validate a 40-question golden dataset and preserve ambiguous cases for review.
+- Run and report a frozen 40-case baseline without treating citation validity as answer correctness.
+- Prepare human-review worksheets, provisional review ledgers, and failure taxonomies.
+- Test targeted RAG improvements on selected cases without silently changing the golden data.
 
 ## Architecture
 

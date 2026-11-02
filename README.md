@@ -73,6 +73,13 @@ flowchart LR
 5. The pipeline builds a prompt that treats retrieved documents as untrusted data and requires source labels such as `[Source 1]`.
 6. The LLM response is checked for valid citations and displayed with the supporting passages and metadata.
 
+### Evaluation flow
+
+1. `evaluations/golden_dataset.csv` supplies the question, selected policy, expected behavior, evidence reference, and verification status.
+2. `evaluations/run_baseline.py` sends each question through the same retrieval and generation pipeline while preserving the explicit policy filter.
+3. `evaluations/results/baseline_results.csv` stores row-level answers and deterministic checks; `baseline_metrics.json` stores aggregate metrics; and detailed traces are kept as local evaluation evidence.
+4. Human review files separate answer correctness, citation support, groundedness, and failure categories from deterministic execution and citation-reference checks.
+
 ## Project structure
 
 ```text
@@ -101,6 +108,8 @@ AIClaimsAssist/
 └── requirements.txt
 ```
 
+The `evaluations/` directory contains the Week 4 evaluation implementation and evidence: the frozen golden dataset, baseline runner, aggregate metrics, human-review worksheets, failure taxonomy, and reports. Detailed diagnostic and smoke traces are generated separately and remain local unless sanitized.
+
 ## Setup
 
 Create and activate a virtual environment, then install the dependencies:
@@ -122,6 +131,8 @@ NEBIUS_BASE_URL=your-nebius-openai-compatible-base-url
 ```
 
 The Pinecone index must be configured with dimension `384`, matching the default embedding model.
+
+Evaluation runs use the project-root `.env` and must never commit that file or expose its values. The Week 4 baseline uses the existing populated index and sample corpus; it does not recreate indexes or modify source documents.
 
 ## Index the corpus
 
@@ -153,6 +164,8 @@ streamlit run app.py
 
 Open the local Streamlit URL shown in the terminal. Choose a policy before asking a question. The Documents tab provides source previews; the Ask a question tab provides grounded answers, citations, retrieved passages, model metadata, and latency.
 
+The Streamlit application is the product under evaluation. Evaluation runners use the same RAG pipeline directly so that retrieval, reranking, generation, citation validation, and policy isolation are measured without relying on generated answers as ground truth.
+
 ## Retrieval options
 
 | Option | Behavior |
@@ -174,6 +187,8 @@ pytest
 
 The tests cover document loading, chunking, indexing behavior, BM25 and hybrid retrieval, reranking, the RAG pipeline, the Streamlit app, and the committed sample corpus.
 
+The evaluation tests also cover explicit policy filtering, environment loading, deterministic baseline checks, diagnostic trace redaction, canonical hybrid identities, citation mapping, missing evidence, ambiguous answers, and answer-scope filtering. The final Week 4 implementation passed 57 tests before the documentation-only updates.
+
 ## Week 4 evaluation workflow
 
 The Week 4 evaluation was completed in staged steps against the committed synthetic sample corpus. The frozen 40-question dataset contains 37 `VERIFIED` cases and 3 `NEEDS_REVIEW` cases. Evaluation artifacts are kept under [`evaluations/`](evaluations/).
@@ -188,11 +203,15 @@ The Week 4 evaluation was completed in staged steps against the committed synthe
 
 Key reports include [`baseline_report.md`](evaluations/reports/baseline_report.md), [`failure_analysis.md`](evaluations/reports/failure_analysis.md), and [`answer_scope_before_after.md`](evaluations/reports/answer_scope_before_after.md). Human semantic correctness, groundedness, and citation-support judgments remain separate from deterministic metrics and provisional review signals.
 
+The evaluation outputs are intended for reproducible review: baseline artifacts are frozen before targeted improvements, smoke-test outputs are stored separately from the baseline, and the full 40-case evaluation is not silently rerun after a code change.
+
 ## Data and security notes
 
 The committed sample corpus is synthetic and exists for local development and evaluation. It includes realistic-looking redaction-test material, including synthetic identity documents and PII spans; it does not represent real policyholders.
 
 Keep API keys and service URLs in `.env` or another secret manager. The repository ignores `.env`, virtual environments, caches, bytecode, and Streamlit secrets. Never paste credentials into source files, notebooks, test fixtures, or committed data.
+
+Evaluation traces can contain retrieved policy excerpts and model responses. Keep diagnostic and smoke traces local unless they are deliberately sanitized for sharing; use the committed summary reports and aggregate metrics for public evaluation results.
 
 ## License
 

@@ -1,0 +1,2630 @@
+[
+  {
+    "question_id": "AC-003",
+    "policy_id": "MOT-0000002",
+    "question": "What are the bodily injury liability limits per person?",
+    "scenario": "Happy path",
+    "verification_status": "VERIFIED",
+    "expected_answer": "The bodily injury liability limit is €100 000 per person.",
+    "configuration": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "retrieval_top_k": 10,
+      "passage_top_k": 5
+    },
+    "pipeline": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true
+    },
+    "semantic_index_diagnostic": {
+      "namespace": "section-aware",
+      "policy_id": "MOT-0000002",
+      "policy_id_known_locally": true,
+      "policy_filter": {
+        "policy_id": {
+          "$eq": "MOT-0000002"
+        }
+      },
+      "expected_dimension": 384,
+      "query_embedding_dimension": 384,
+      "query_embedding_norm": 1.00000005956768,
+      "index_description_available": false,
+      "index_description_note": "The Pinecone Index data-plane client does not expose describe_index; index dimension and metric are not observable from this object.",
+      "namespace_vector_counts": {
+        "section-aware": 32,
+        "fixed-size": 10
+      },
+      "namespace_vector_count": 32,
+      "query_match_count": 5,
+      "query_match_policy_ids": [
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002"
+      ],
+      "error_type": null
+    },
+    "semantic_retrieval": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.648938179
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.586792827
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "semantic_score": 0.539972782
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "semantic_score": 0.323479086
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0001:414f717120",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0001:414f717120"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "semantic_score": 0.257516116
+        }
+      ]
+    },
+    "bm25_retrieval": {
+      "count": 5,
+      "results": [
+        {
+          "chunk_id": "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "score": 19.06518904026428
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "score": 15.563330241492757
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "score": 13.409028485961617
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Endorsements",
+          "score": 5.0209508905860005
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "score": 4.252710265828747
+        }
+      ]
+    },
+    "hybrid_retrieval": {
+      "count": 7,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031746031746031744,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625,
+          "retrieval_source": "semantic"
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b",
+          "canonical_id": "canonical:da228b0ed5781645",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Endorsements",
+          "ranking_score": 0.015625,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0001:414f717120",
+          "canonical_id": "canonical:9de70680ca29df09",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0001:414f717120"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "semantic"
+        }
+      ]
+    },
+    "reranker_input": {
+      "count": 7,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031746031746031744
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b",
+          "canonical_id": "canonical:da228b0ed5781645",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-DEC:section_aware:0003:24b8de2c6b"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Endorsements",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0001:414f717120",
+          "canonical_id": "canonical:9de70680ca29df09",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0001:414f717120"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015384615384615385
+        }
+      ]
+    },
+    "cross_encoder_reranking": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 7.022536277770996,
+          "original_rank": 1,
+          "reranked_rank": 1
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 6.227262496948242,
+          "original_rank": 2,
+          "reranked_rank": 2
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "cross_encoder_score": -3.1411819458007812,
+          "original_rank": 3,
+          "reranked_rank": 3
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "cross_encoder_score": -11.339731216430664,
+          "original_rank": 6,
+          "reranked_rank": 4
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "cross_encoder_score": -11.34847354888916,
+          "original_rank": 4,
+          "reranked_rank": 5
+        }
+      ]
+    },
+    "ordered_source_mapping": {
+      "Source 1": {
+        "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:d266b94cf2e94369",
+        "source_chunk_ids": [
+          "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      "Source 2": {
+        "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+        "canonical_id": "canonical:f7b02e88457e73ae",
+        "source_chunk_ids": [
+          "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 3": {
+        "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:7777cc3396a76660",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      "Source 4": {
+        "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+        "canonical_id": "canonical:6c987b206b33677c",
+        "source_chunk_ids": [
+          "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "C-1003-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 5": {
+        "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+        "canonical_id": "canonical:2a3bdcd0a3ceba71",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0003:267194a2e7"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Definitions",
+        "text": "Definitions\n\"Insured\" means the named insured shown on the Declarations and, where applicable, resident relatives and others defined by the policy.\n\"Covered Cause of Loss\" means a peril insured against under this policy and not otherwise excluded."
+      }
+    },
+    "raw_llm_output_from_client": "The bodily injury liability limit per person is €100,000.00 [Source 1, Source 2]. There is a €1,000.00 deductible for bodily injury per person [Source 2].",
+    "raw_llm_output": "The bodily injury liability limit per person is €100,000.00 [Source 1, Source 2]. There is a €1,000.00 deductible for bodily injury per person [Source 2].",
+    "post_filter_answer": "The bodily injury liability limit per person is €100,000.00 [Source 1, Source 2].",
+    "unrelated_deductible_claim_removed": true,
+    "citation_labels_in_answer": [
+      "Source 1",
+      "Source 2"
+    ],
+    "citation_validation": {
+      "parser_matched_labels": [
+        "Source 1",
+        "Source 2"
+      ],
+      "accepted_labels": [
+        "Source 1",
+        "Source 2"
+      ],
+      "rejected_labels": [],
+      "invalid_labels": []
+    },
+    "fallback_status": "none",
+    "result": {
+      "answer": "The bodily injury liability limit per person is €100,000.00 [Source 1, Source 2].",
+      "citations": [
+        {
+          "source_label": "Source 1",
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        },
+        {
+          "source_label": "Source 2",
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        }
+      ],
+      "missing_information": [],
+      "retrieved_sources": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "text": "Definitions\n\"Insured\" means the named insured shown on the Declarations and, where applicable, resident relatives and others defined by the policy.\n\"Covered Cause of Loss\" means a peril insured against under this policy and not otherwise excluded."
+        }
+      ],
+      "model_name": "google/gemma-3-27b-it",
+      "latency": 4.383783099940047,
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "number_of_passages": 5
+    },
+    "checks": {
+      "errors": [],
+      "policy_isolation_ok": true,
+      "citation_ids_ok": true,
+      "missing_citations": false,
+      "empty_response": false,
+      "api_failure": false
+    },
+    "retrieved_evidence": [
+      {
+        "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:d266b94cf2e94369",
+        "source_chunk_ids": [
+          "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      {
+        "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+        "canonical_id": "canonical:f7b02e88457e73ae",
+        "source_chunk_ids": [
+          "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:7777cc3396a76660",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      {
+        "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+        "canonical_id": "canonical:6c987b206b33677c",
+        "source_chunk_ids": [
+          "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "C-1003-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+        "canonical_id": "canonical:2a3bdcd0a3ceba71",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0003:267194a2e7"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Definitions",
+        "text": "Definitions\n\"Insured\" means the named insured shown on the Declarations and, where applicable, resident relatives and others defined by the policy.\n\"Covered Cause of Loss\" means a peril insured against under this policy and not otherwise excluded."
+      }
+    ]
+  },
+  {
+    "question_id": "AC-004",
+    "policy_id": "MOT-0000004",
+    "question": "What are the bodily injury liability limits per accident?",
+    "scenario": "Happy path",
+    "verification_status": "VERIFIED",
+    "expected_answer": "The bodily injury liability limit is €300 000 per accident.",
+    "configuration": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "retrieval_top_k": 10,
+      "passage_top_k": 5
+    },
+    "pipeline": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true
+    },
+    "semantic_index_diagnostic": {
+      "namespace": "section-aware",
+      "policy_id": "MOT-0000004",
+      "policy_id_known_locally": true,
+      "policy_filter": {
+        "policy_id": {
+          "$eq": "MOT-0000004"
+        }
+      },
+      "expected_dimension": 384,
+      "query_embedding_dimension": 384,
+      "query_embedding_norm": 1.0000000129052118,
+      "index_description_available": false,
+      "index_description_note": "The Pinecone Index data-plane client does not expose describe_index; index dimension and metric are not observable from this object.",
+      "namespace_vector_counts": {
+        "section-aware": 32,
+        "fixed-size": 10
+      },
+      "namespace_vector_count": 32,
+      "query_match_count": 5,
+      "query_match_policy_ids": [
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004"
+      ],
+      "error_type": null
+    },
+    "semantic_retrieval": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.692732692
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.634325206
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "semantic_score": 0.60921526
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0003:267194a2e7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Definitions",
+          "semantic_score": 0.343626708
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "semantic_score": 0.322701097
+        }
+      ]
+    },
+    "bm25_retrieval": {
+      "count": 5,
+      "results": [
+        {
+          "chunk_id": "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "score": 21.88683761109926
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "score": 17.705011173301322
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "score": 16.073995041262783
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-endorsements.pdf",
+          "section_heading": "Description",
+          "score": 7.70324548373512
+        },
+        {
+          "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1002-accident-statement.pdf",
+          "section_heading": "Document",
+          "score": 4.99698840008948
+        }
+      ]
+    },
+    "hybrid_retrieval": {
+      "count": 7,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031746031746031744,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+          "canonical_id": "canonical:4cab733203de498f",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-endorsements.pdf",
+          "section_heading": "Description",
+          "ranking_score": 0.015625,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:9ef164527165e5ad",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625,
+          "retrieval_source": "semantic"
+        },
+        {
+          "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+          "canonical_id": "canonical:0fb707ac1469bf29",
+          "source_chunk_ids": [
+            "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1002-accident-statement.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": "canonical:f98419e8eda22702",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "semantic"
+        }
+      ]
+    },
+    "reranker_input": {
+      "count": 7,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031746031746031744
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+          "canonical_id": "canonical:4cab733203de498f",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-endorsements.pdf",
+          "section_heading": "Description",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:9ef164527165e5ad",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+          "canonical_id": "canonical:0fb707ac1469bf29",
+          "source_chunk_ids": [
+            "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1002-accident-statement.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": "canonical:f98419e8eda22702",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015384615384615385
+        }
+      ]
+    },
+    "cross_encoder_reranking": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 6.641761779785156,
+          "original_rank": 1,
+          "reranked_rank": 1
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 5.756053924560547,
+          "original_rank": 2,
+          "reranked_rank": 2
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "cross_encoder_score": 0.9625375866889954,
+          "original_rank": 3,
+          "reranked_rank": 3
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+          "canonical_id": "canonical:4cab733203de498f",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-endorsements.pdf",
+          "section_heading": "Description",
+          "cross_encoder_score": -11.012855529785156,
+          "original_rank": 4,
+          "reranked_rank": 4
+        },
+        {
+          "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+          "canonical_id": "canonical:0fb707ac1469bf29",
+          "source_chunk_ids": [
+            "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1002-accident-statement.pdf",
+          "section_heading": "Document",
+          "cross_encoder_score": -11.264163970947266,
+          "original_rank": 6,
+          "reranked_rank": 5
+        }
+      ]
+    },
+    "ordered_source_mapping": {
+      "Source 1": {
+        "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:6ac8539c0fef3543",
+        "source_chunk_ids": [
+          "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      "Source 2": {
+        "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+        "canonical_id": "canonical:d27732a05b6b97ea",
+        "source_chunk_ids": [
+          "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 3": {
+        "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:3efbb46bb411b472",
+        "source_chunk_ids": [
+          "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      "Source 4": {
+        "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+        "canonical_id": "canonical:4cab733203de498f",
+        "source_chunk_ids": [
+          "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-endorsements.pdf",
+        "section_heading": "Description",
+        "text": "Description\nGAP\nLoan/Lease Gap Coverage — pays the difference between the auto's actual cash value\nand the loan balance.\nNEW_CAR_REPL\nNew Car Replacement — replaces a totaled new vehicle with a comparable new model.\nUM_UIM\nUninsured/Underinsured Motorist — covers injury caused by an at-fault driver lacking\nadequate limits.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 5": {
+        "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+        "canonical_id": "canonical:0fb707ac1469bf29",
+        "source_chunk_ids": [
+          "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "C-1002-accident-statement.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nMotor Accident Statement\nMOTOR ACCIDENT STATEMENT — Claim C-1002\nDATE OF ACCIDENT\n31/01/2025\nCAUSE\ntheft\nLOCATION\nDermot Ville (Ireland)\nPOLICY\nMOT-0000004\nVehicle A — insured\nDRIVER\nMr. Stewart Montague\nPOLICY\nMOT-0000004\nREGISTRATION\nXD-9797-YI\nVEHICLE\nOpel Astra (2008, red)\nVehicle B — other party\nNo third party involved.\nA\nB\nCircumstance\n✓\nwas stopped or parked\nwas moving in the same direction\nwas changing lanes\nstruck the rear of the other vehicle\nwas turning or manoeuvring\n✓\nno third party was involved\nSignature — Vehicle A   Mr. Stewart Montague\nSignature — Vehicle B   —\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSKETCH OF THE ACCIDENT\nA\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    },
+    "raw_llm_output_from_client": "The bodily injury liability limit per accident is €300,000.00 [Source 1]. The deductible for bodily injury per accident is €500.00 [Source 2].",
+    "raw_llm_output": "The bodily injury liability limit per accident is €300,000.00 [Source 1]. The deductible for bodily injury per accident is €500.00 [Source 2].",
+    "post_filter_answer": "The bodily injury liability limit per accident is €300,000.00 [Source 1].",
+    "unrelated_deductible_claim_removed": true,
+    "citation_labels_in_answer": [
+      "Source 1"
+    ],
+    "citation_validation": {
+      "parser_matched_labels": [
+        "Source 1"
+      ],
+      "accepted_labels": [
+        "Source 1"
+      ],
+      "rejected_labels": [],
+      "invalid_labels": []
+    },
+    "fallback_status": "none",
+    "result": {
+      "answer": "The bodily injury liability limit per accident is €300,000.00 [Source 1].",
+      "citations": [
+        {
+          "source_label": "Source 1",
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        }
+      ],
+      "missing_information": [],
+      "retrieved_sources": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+          "canonical_id": "canonical:4cab733203de498f",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-endorsements.pdf",
+          "section_heading": "Description",
+          "text": "Description\nGAP\nLoan/Lease Gap Coverage — pays the difference between the auto's actual cash value\nand the loan balance.\nNEW_CAR_REPL\nNew Car Replacement — replaces a totaled new vehicle with a comparable new model.\nUM_UIM\nUninsured/Underinsured Motorist — covers injury caused by an at-fault driver lacking\nadequate limits.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+          "canonical_id": "canonical:0fb707ac1469bf29",
+          "source_chunk_ids": [
+            "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1002-accident-statement.pdf",
+          "section_heading": "Document",
+          "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nMotor Accident Statement\nMOTOR ACCIDENT STATEMENT — Claim C-1002\nDATE OF ACCIDENT\n31/01/2025\nCAUSE\ntheft\nLOCATION\nDermot Ville (Ireland)\nPOLICY\nMOT-0000004\nVehicle A — insured\nDRIVER\nMr. Stewart Montague\nPOLICY\nMOT-0000004\nREGISTRATION\nXD-9797-YI\nVEHICLE\nOpel Astra (2008, red)\nVehicle B — other party\nNo third party involved.\nA\nB\nCircumstance\n✓\nwas stopped or parked\nwas moving in the same direction\nwas changing lanes\nstruck the rear of the other vehicle\nwas turning or manoeuvring\n✓\nno third party was involved\nSignature — Vehicle A   Mr. Stewart Montague\nSignature — Vehicle B   —\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSKETCH OF THE ACCIDENT\nA\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        }
+      ],
+      "model_name": "google/gemma-3-27b-it",
+      "latency": 2.941765299998224,
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "number_of_passages": 5
+    },
+    "checks": {
+      "errors": [],
+      "policy_isolation_ok": true,
+      "citation_ids_ok": true,
+      "missing_citations": false,
+      "empty_response": false,
+      "api_failure": false
+    },
+    "retrieved_evidence": [
+      {
+        "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:6ac8539c0fef3543",
+        "source_chunk_ids": [
+          "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      {
+        "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+        "canonical_id": "canonical:d27732a05b6b97ea",
+        "source_chunk_ids": [
+          "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:3efbb46bb411b472",
+        "source_chunk_ids": [
+          "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      {
+        "chunk_id": "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869",
+        "canonical_id": "canonical:4cab733203de498f",
+        "source_chunk_ids": [
+          "DOC-MOT-0000004-ENDORSEMENTS:section_aware:0002:8de2be9869"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-endorsements.pdf",
+        "section_heading": "Description",
+        "text": "Description\nGAP\nLoan/Lease Gap Coverage — pays the difference between the auto's actual cash value\nand the loan balance.\nNEW_CAR_REPL\nNew Car Replacement — replaces a totaled new vehicle with a comparable new model.\nUM_UIM\nUninsured/Underinsured Motorist — covers injury caused by an at-fault driver lacking\nadequate limits.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd",
+        "canonical_id": "canonical:0fb707ac1469bf29",
+        "source_chunk_ids": [
+          "DOC-C-1002-ACCIDENT:section_aware:0000:b246ac16fd"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "C-1002-accident-statement.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nMotor Accident Statement\nMOTOR ACCIDENT STATEMENT — Claim C-1002\nDATE OF ACCIDENT\n31/01/2025\nCAUSE\ntheft\nLOCATION\nDermot Ville (Ireland)\nPOLICY\nMOT-0000004\nVehicle A — insured\nDRIVER\nMr. Stewart Montague\nPOLICY\nMOT-0000004\nREGISTRATION\nXD-9797-YI\nVEHICLE\nOpel Astra (2008, red)\nVehicle B — other party\nNo third party involved.\nA\nB\nCircumstance\n✓\nwas stopped or parked\nwas moving in the same direction\nwas changing lanes\nstruck the rear of the other vehicle\nwas turning or manoeuvring\n✓\nno third party was involved\nSignature — Vehicle A   Mr. Stewart Montague\nSignature — Vehicle B   —\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSKETCH OF THE ACCIDENT\nA\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    ]
+  },
+  {
+    "question_id": "AC-005",
+    "policy_id": "MOT-0000002",
+    "question": "What is the property damage liability limit?",
+    "scenario": "Happy path",
+    "verification_status": "VERIFIED",
+    "expected_answer": "The property damage liability limit is €100 000.",
+    "configuration": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "retrieval_top_k": 10,
+      "passage_top_k": 5
+    },
+    "pipeline": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true
+    },
+    "semantic_index_diagnostic": {
+      "namespace": "section-aware",
+      "policy_id": "MOT-0000002",
+      "policy_id_known_locally": true,
+      "policy_filter": {
+        "policy_id": {
+          "$eq": "MOT-0000002"
+        }
+      },
+      "expected_dimension": 384,
+      "query_embedding_dimension": 384,
+      "query_embedding_norm": 0.9999999777901402,
+      "index_description_available": false,
+      "index_description_note": "The Pinecone Index data-plane client does not expose describe_index; index dimension and metric are not observable from this object.",
+      "namespace_vector_counts": {
+        "fixed-size": 10,
+        "section-aware": 32
+      },
+      "namespace_vector_count": 32,
+      "query_match_count": 5,
+      "query_match_policy_ids": [
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002",
+        "MOT-0000002"
+      ],
+      "error_type": null
+    },
+    "semantic_retrieval": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.591200233
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "semantic_score": 0.56206876
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.561413705
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "semantic_score": 0.341395825
+        },
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0001:655f0b7119",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0001:655f0b7119"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Policy Declarations",
+          "semantic_score": 0.320583105
+        }
+      ]
+    },
+    "bm25_retrieval": {
+      "count": 5,
+      "results": [
+        {
+          "chunk_id": "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "score": 11.154942297125507
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "score": 9.738409173529707
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Conditions",
+          "score": 7.137662213017445
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "score": 6.462204504575579
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "score": 5.362797514049884
+        }
+      ]
+    },
+    "hybrid_retrieval": {
+      "count": 7,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03200204813108039,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031754032258064516,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:b78b4356fba00e57",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Conditions",
+          "ranking_score": 0.015873015873015872,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625,
+          "retrieval_source": "semantic"
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0001:655f0b7119",
+          "canonical_id": "canonical:7d4d4752b83cbd5b",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0001:655f0b7119"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Policy Declarations",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "semantic"
+        }
+      ]
+    },
+    "reranker_input": {
+      "count": 7,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03200204813108039
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.031754032258064516
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:b78b4356fba00e57",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Conditions",
+          "ranking_score": 0.015873015873015872
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0003:267194a2e7",
+          "canonical_id": "canonical:2a3bdcd0a3ceba71",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0003:267194a2e7"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Definitions",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0001:655f0b7119",
+          "canonical_id": "canonical:7d4d4752b83cbd5b",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0001:655f0b7119"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Policy Declarations",
+          "ranking_score": 0.015384615384615385
+        }
+      ]
+    },
+    "cross_encoder_reranking": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 2.4113383293151855,
+          "original_rank": 1,
+          "reranked_rank": 1
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 2.3613991737365723,
+          "original_rank": 2,
+          "reranked_rank": 2
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "cross_encoder_score": -1.1443443298339844,
+          "original_rank": 3,
+          "reranked_rank": 3
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:b78b4356fba00e57",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Conditions",
+          "cross_encoder_score": -8.642389297485352,
+          "original_rank": 4,
+          "reranked_rank": 4
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "cross_encoder_score": -10.749899864196777,
+          "original_rank": 6,
+          "reranked_rank": 5
+        }
+      ]
+    },
+    "ordered_source_mapping": {
+      "Source 1": {
+        "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:d266b94cf2e94369",
+        "source_chunk_ids": [
+          "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      "Source 2": {
+        "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+        "canonical_id": "canonical:f7b02e88457e73ae",
+        "source_chunk_ids": [
+          "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 3": {
+        "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:7777cc3396a76660",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      "Source 4": {
+        "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+        "canonical_id": "canonical:b78b4356fba00e57",
+        "source_chunk_ids": [
+          "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Conditions",
+        "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+      },
+      "Source 5": {
+        "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+        "canonical_id": "canonical:6c987b206b33677c",
+        "source_chunk_ids": [
+          "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "C-1003-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    },
+    "raw_llm_output_from_client": "The property damage liability limit is €100,000.00 [Source 1]. The deductible for property damage is €1,000.00 [Source 2].",
+    "raw_llm_output": "The property damage liability limit is €100,000.00 [Source 1]. The deductible for property damage is €1,000.00 [Source 2].",
+    "post_filter_answer": "The property damage liability limit is €100,000.00 [Source 1].",
+    "unrelated_deductible_claim_removed": true,
+    "citation_labels_in_answer": [
+      "Source 1"
+    ],
+    "citation_validation": {
+      "parser_matched_labels": [
+        "Source 1"
+      ],
+      "accepted_labels": [
+        "Source 1"
+      ],
+      "rejected_labels": [],
+      "invalid_labels": []
+    },
+    "fallback_status": "none",
+    "result": {
+      "answer": "The property damage liability limit is €100,000.00 [Source 1].",
+      "citations": [
+        {
+          "source_label": "Source 1",
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        }
+      ],
+      "missing_information": [],
+      "retrieved_sources": [
+        {
+          "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:d266b94cf2e94369",
+          "source_chunk_ids": [
+            "MOT-0000002-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        },
+        {
+          "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "canonical_id": "canonical:f7b02e88457e73ae",
+          "source_chunk_ids": [
+            "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+            "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-schedule.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:7777cc3396a76660",
+          "source_chunk_ids": [
+            "MOT-0000002-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+        },
+        {
+          "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:b78b4356fba00e57",
+          "source_chunk_ids": [
+            "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "MOT-0000002-contract.docx",
+          "section_heading": "Conditions",
+          "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+        },
+        {
+          "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+          "canonical_id": "canonical:6c987b206b33677c",
+          "source_chunk_ids": [
+            "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+          ],
+          "policy_id": "MOT-0000002",
+          "source_filename": "C-1003-adjuster-report.pdf",
+          "section_heading": "Document",
+          "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        }
+      ],
+      "model_name": "google/gemma-3-27b-it",
+      "latency": 7.157851499971002,
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "number_of_passages": 5
+    },
+    "checks": {
+      "errors": [],
+      "policy_isolation_ok": true,
+      "citation_ids_ok": true,
+      "missing_citations": false,
+      "empty_response": false,
+      "api_failure": false
+    },
+    "retrieved_evidence": [
+      {
+        "chunk_id": "MOT-0000002-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:d266b94cf2e94369",
+        "source_chunk_ids": [
+          "MOT-0000002-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000002-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      {
+        "chunk_id": "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+        "canonical_id": "canonical:f7b02e88457e73ae",
+        "source_chunk_ids": [
+          "MOT-0000002-schedule:section_aware:0002:57e50d4033",
+          "DOC-MOT-0000002-SCHEDULE:section_aware:0002:57e50d4033"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€1,000.00\nBodily injury — per accident\n€300,000.00\n€1,000.00\nProperty damage\n€100,000.00\n€1,000.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "MOT-0000002-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:7777cc3396a76660",
+        "source_chunk_ids": [
+          "MOT-0000002-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000002-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      {
+        "chunk_id": "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91",
+        "canonical_id": "canonical:b78b4356fba00e57",
+        "source_chunk_ids": [
+          "DOC-MOT-0000002-CONTRACT:section_aware:0004:2532294d91"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "MOT-0000002-contract.docx",
+        "section_heading": "Conditions",
+        "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+      },
+      {
+        "chunk_id": "DOC-C-1003-ADJ:section_aware:0000:8de53e5734",
+        "canonical_id": "canonical:6c987b206b33677c",
+        "source_chunk_ids": [
+          "DOC-C-1003-ADJ:section_aware:0000:8de53e5734"
+        ],
+        "policy_id": "MOT-0000002",
+        "source_filename": "C-1003-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1003\nPolicy number\nMOT-0000002\nLine of business\nMotor\nInsured\nDott. Alfio Leone\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n29/03/2024\nCause of loss\nrear-end collision\nDisposition\nDENIED\nReserve\n€0.00\nPaid to date\n€0.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported rear-end collision.\nPhotographs and the repair estimate are on file.\nRecommendation\nBased on the investigation, the loss is not covered under the policy terms; denial is recommended. See\nthe denial letter issued to the insured.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    ]
+  },
+  {
+    "question_id": "AC-006",
+    "policy_id": "MOT-0000004",
+    "question": "What is the property damage liability limit?",
+    "scenario": "Happy path",
+    "verification_status": "VERIFIED",
+    "expected_answer": "The property damage liability limit is €100 000.",
+    "configuration": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "retrieval_top_k": 10,
+      "passage_top_k": 5
+    },
+    "pipeline": {
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true
+    },
+    "semantic_index_diagnostic": {
+      "namespace": "section-aware",
+      "policy_id": "MOT-0000004",
+      "policy_id_known_locally": true,
+      "policy_filter": {
+        "policy_id": {
+          "$eq": "MOT-0000004"
+        }
+      },
+      "expected_dimension": 384,
+      "query_embedding_dimension": 384,
+      "query_embedding_norm": 0.9999999777901402,
+      "index_description_available": false,
+      "index_description_note": "The Pinecone Index data-plane client does not expose describe_index; index dimension and metric are not observable from this object.",
+      "namespace_vector_counts": {
+        "fixed-size": 10,
+        "section-aware": 32
+      },
+      "namespace_vector_count": 32,
+      "query_match_count": 5,
+      "query_match_policy_ids": [
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004",
+        "MOT-0000004"
+      ],
+      "error_type": null
+    },
+    "semantic_retrieval": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.591200233
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "semantic_score": 0.569987535
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "semantic_score": 0.56206876
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "semantic_score": 0.357005239
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0001:05fcd196f8",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0001:05fcd196f8"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage Schedule — Policy MOT-0000004",
+          "semantic_score": 0.34364295
+        }
+      ]
+    },
+    "bm25_retrieval": {
+      "count": 5,
+      "results": [
+        {
+          "chunk_id": "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "score": 11.154942297125507
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "score": 9.917137011826947
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Conditions",
+          "score": 7.137662213017445
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "score": 6.462204504575579
+        },
+        {
+          "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+          "canonical_id": null,
+          "source_chunk_ids": [
+            "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1004-adjuster-report.pdf",
+          "section_heading": "Document",
+          "score": 5.476135740222957
+        }
+      ]
+    },
+    "hybrid_retrieval": {
+      "count": 7,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.03149801587301587,
+          "retrieval_source": "hybrid"
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:46691213b022d02d",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Conditions",
+          "ranking_score": 0.015873015873015872,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": "canonical:f98419e8eda22702",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015625,
+          "retrieval_source": "semantic"
+        },
+        {
+          "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+          "canonical_id": "canonical:26579c81d4ed3793",
+          "source_chunk_ids": [
+            "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1004-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "keyword"
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0001:05fcd196f8",
+          "canonical_id": "canonical:3aa4ef385408eaf0",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0001:05fcd196f8"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage Schedule — Policy MOT-0000004",
+          "ranking_score": 0.015384615384615385,
+          "retrieval_source": "semantic"
+        }
+      ]
+    },
+    "reranker_input": {
+      "count": 7,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03278688524590164
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "ranking_score": 0.03225806451612903
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "ranking_score": 0.03149801587301587
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:46691213b022d02d",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Conditions",
+          "ranking_score": 0.015873015873015872
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0001:3e8a5b3446",
+          "canonical_id": "canonical:f98419e8eda22702",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0001:3e8a5b3446"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Motor Policy — Contract",
+          "ranking_score": 0.015625
+        },
+        {
+          "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+          "canonical_id": "canonical:26579c81d4ed3793",
+          "source_chunk_ids": [
+            "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1004-adjuster-report.pdf",
+          "section_heading": "Document",
+          "ranking_score": 0.015384615384615385
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0001:05fcd196f8",
+          "canonical_id": "canonical:3aa4ef385408eaf0",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0001:05fcd196f8"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage Schedule — Policy MOT-0000004",
+          "ranking_score": 0.015384615384615385
+        }
+      ]
+    },
+    "cross_encoder_reranking": {
+      "count": 5,
+      "error_type": null,
+      "results": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 2.4113383293151855,
+          "original_rank": 1,
+          "reranked_rank": 1
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "cross_encoder_score": 2.1261513233184814,
+          "original_rank": 2,
+          "reranked_rank": 2
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "cross_encoder_score": -1.1443443298339844,
+          "original_rank": 3,
+          "reranked_rank": 3
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:46691213b022d02d",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Conditions",
+          "cross_encoder_score": -8.642389297485352,
+          "original_rank": 4,
+          "reranked_rank": 4
+        },
+        {
+          "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+          "canonical_id": "canonical:26579c81d4ed3793",
+          "source_chunk_ids": [
+            "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1004-adjuster-report.pdf",
+          "section_heading": "Document",
+          "cross_encoder_score": -10.231157302856445,
+          "original_rank": 6,
+          "reranked_rank": 5
+        }
+      ]
+    },
+    "ordered_source_mapping": {
+      "Source 1": {
+        "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:6ac8539c0fef3543",
+        "source_chunk_ids": [
+          "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      "Source 2": {
+        "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+        "canonical_id": "canonical:d27732a05b6b97ea",
+        "source_chunk_ids": [
+          "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      "Source 3": {
+        "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:3efbb46bb411b472",
+        "source_chunk_ids": [
+          "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      "Source 4": {
+        "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+        "canonical_id": "canonical:46691213b022d02d",
+        "source_chunk_ids": [
+          "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Conditions",
+        "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+      },
+      "Source 5": {
+        "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+        "canonical_id": "canonical:26579c81d4ed3793",
+        "source_chunk_ids": [
+          "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "C-1004-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1004\nPolicy number\nMOT-0000004\nLine of business\nMotor\nInsured\nMr. Stewart Montague\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n03/09/2025\nCause of loss\nhail damage\nDisposition\nCLOSED — PAID\nReserve\n€0.00\nPaid to date\n€48,950.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported hail damage.\nPhotographs and the repair estimate are on file.\nRecommendation\nCoverage applies. Claim resolved; payment of €48,950.00 issued to the insured, net of the €500.00\ndeductible.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    },
+    "raw_llm_output_from_client": "The property damage liability limit is €100,000.00 [Source 1]. The property damage deductible is €500.00 [Source 2].",
+    "raw_llm_output": "The property damage liability limit is €100,000.00 [Source 1]. The property damage deductible is €500.00 [Source 2].",
+    "post_filter_answer": "The property damage liability limit is €100,000.00 [Source 1].",
+    "unrelated_deductible_claim_removed": true,
+    "citation_labels_in_answer": [
+      "Source 1"
+    ],
+    "citation_validation": {
+      "parser_matched_labels": [
+        "Source 1"
+      ],
+      "accepted_labels": [
+        "Source 1"
+      ],
+      "rejected_labels": [],
+      "invalid_labels": []
+    },
+    "fallback_status": "none",
+    "result": {
+      "answer": "The property damage liability limit is €100,000.00 [Source 1].",
+      "citations": [
+        {
+          "source_label": "Source 1",
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        }
+      ],
+      "missing_information": [],
+      "retrieved_sources": [
+        {
+          "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "canonical_id": "canonical:6ac8539c0fef3543",
+          "source_chunk_ids": [
+            "MOT-0000004-declarations:section_aware:0002:9a10591741",
+            "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-declarations.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+        },
+        {
+          "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "canonical_id": "canonical:d27732a05b6b97ea",
+          "source_chunk_ids": [
+            "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+            "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-schedule.pdf",
+          "section_heading": "Coverage",
+          "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        },
+        {
+          "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "canonical_id": "canonical:3efbb46bb411b472",
+          "source_chunk_ids": [
+            "MOT-0000004-contract:section_aware:0002:717fb75477",
+            "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Insuring Agreement",
+          "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+        },
+        {
+          "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+          "canonical_id": "canonical:46691213b022d02d",
+          "source_chunk_ids": [
+            "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "MOT-0000004-contract.docx",
+          "section_heading": "Conditions",
+          "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+        },
+        {
+          "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+          "canonical_id": "canonical:26579c81d4ed3793",
+          "source_chunk_ids": [
+            "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+          ],
+          "policy_id": "MOT-0000004",
+          "source_filename": "C-1004-adjuster-report.pdf",
+          "section_heading": "Document",
+          "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1004\nPolicy number\nMOT-0000004\nLine of business\nMotor\nInsured\nMr. Stewart Montague\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n03/09/2025\nCause of loss\nhail damage\nDisposition\nCLOSED — PAID\nReserve\n€0.00\nPaid to date\n€48,950.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported hail damage.\nPhotographs and the repair estimate are on file.\nRecommendation\nCoverage applies. Claim resolved; payment of €48,950.00 issued to the insured, net of the €500.00\ndeductible.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+        }
+      ],
+      "model_name": "google/gemma-3-27b-it",
+      "latency": 4.384482400026172,
+      "retrieval_mode": "hybrid",
+      "chunking_strategy": "section_aware",
+      "reranking_enabled": true,
+      "number_of_passages": 5
+    },
+    "checks": {
+      "errors": [],
+      "policy_isolation_ok": true,
+      "citation_ids_ok": true,
+      "missing_citations": false,
+      "empty_response": false,
+      "api_failure": false
+    },
+    "retrieved_evidence": [
+      {
+        "chunk_id": "MOT-0000004-declarations:section_aware:0002:9a10591741",
+        "canonical_id": "canonical:6ac8539c0fef3543",
+        "source_chunk_ids": [
+          "MOT-0000004-declarations:section_aware:0002:9a10591741",
+          "DOC-MOT-0000004-DEC:section_aware:0002:9a10591741"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-declarations.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit\nBodily injury — per person\n€100,000.00\nBodily injury — per accident\n€300,000.00\nProperty damage\n€100,000.00"
+      },
+      {
+        "chunk_id": "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+        "canonical_id": "canonical:d27732a05b6b97ea",
+        "source_chunk_ids": [
+          "MOT-0000004-schedule:section_aware:0002:e682c8c8a7",
+          "DOC-MOT-0000004-SCHEDULE:section_aware:0002:e682c8c8a7"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-schedule.pdf",
+        "section_heading": "Coverage",
+        "text": "Coverage\nLimit of insurance\nDeductible\nBodily injury — per person\n€100,000.00\n€500.00\nBodily injury — per accident\n€300,000.00\n€500.00\nProperty damage\n€100,000.00\n€500.00\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      },
+      {
+        "chunk_id": "MOT-0000004-contract:section_aware:0002:717fb75477",
+        "canonical_id": "canonical:3efbb46bb411b472",
+        "source_chunk_ids": [
+          "MOT-0000004-contract:section_aware:0002:717fb75477",
+          "DOC-MOT-0000004-CONTRACT:section_aware:0002:717fb75477"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Insuring Agreement",
+        "text": "Insuring Agreement\nWe will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.\nCollision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations."
+      },
+      {
+        "chunk_id": "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91",
+        "canonical_id": "canonical:46691213b022d02d",
+        "source_chunk_ids": [
+          "DOC-MOT-0000004-CONTRACT:section_aware:0004:2532294d91"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "MOT-0000004-contract.docx",
+        "section_heading": "Conditions",
+        "text": "Conditions\nPremium. The premium shown on the Declarations is payable as a condition of this insurance; non-payment may result in cancellation in accordance with the policy terms.\nDuties After Loss. In the event of a loss, the insured must give prompt notice, protect the property from further damage, cooperate in the investigation, and submit a signed proof of loss.\nConcealment or Fraud. This policy is void if any insured has intentionally concealed or misrepresented a material fact concerning this insurance or a claim under it."
+      },
+      {
+        "chunk_id": "DOC-C-1004-ADJ:section_aware:0000:30ec044eae",
+        "canonical_id": "canonical:26579c81d4ed3793",
+        "source_chunk_ids": [
+          "DOC-C-1004-ADJ:section_aware:0000:30ec044eae"
+        ],
+        "policy_id": "MOT-0000004",
+        "source_filename": "C-1004-adjuster-report.pdf",
+        "section_heading": "Document",
+        "text": "Document\nSYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)\nMeridian Mutual Insurance SE\nAdjuster Report\nClaim & Assignment\nClaim number\nC-1004\nPolicy number\nMOT-0000004\nLine of business\nMotor\nInsured\nMr. Stewart Montague\nAdjuster\nFrédéric Joly-Gallet (motor physical damage)\nDate of loss\n03/09/2025\nCause of loss\nhail damage\nDisposition\nCLOSED — PAID\nReserve\n€0.00\nPaid to date\n€48,950.00\nFindings\nInspection confirms damage to the insured vehicle consistent with the reported hail damage.\nPhotographs and the repair estimate are on file.\nRecommendation\nCoverage applies. Claim resolved; payment of €48,950.00 issued to the insured, net of the €500.00\ndeductible.\nThis document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.\nSYNTHETIC — Meridian Mutual (fictional) · not a real insurance document\nPage 1 of 1"
+      }
+    ]
+  }
+]

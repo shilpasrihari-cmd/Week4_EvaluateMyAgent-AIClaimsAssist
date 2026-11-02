@@ -1,0 +1,228 @@
+question_id,policy_id,scenario,question,expected_answer,actual_answer,cited_filenames,evidence_excerpts,missing_information,verification_status,deterministic_flags,golden_interpretation_concern,answer_correctness,citation_support,groundedness,failure_category,reviewer_notes
+AC-001,MOT-0000002,Happy path,What is the deductible for this policy?,The documented deductible is €1 000 per occurrence.,"The deductible is €1,000.00 per occurrence [Source 1]. [Source 2] [Source 3]",MOT-0000002-schedule.pdf; MOT-0000002-declarations.pdf,"Source 1 | MOT-0000002-schedule.pdf | Coverage Schedule — Policy MOT-0000002: Coverage Schedule — Policy MOT-0000002
+Named insured
+Dott. Alfio Leone
+Policy period
+26/11/2023 to 25/11/2024
+Annual premium
+€2,075.00
+Deductible (per occurrence)
+€1,000.00
+
+Source 2 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 3 | MOT-0000002-declarations.pdf | Policy Declarations: Policy Declarations
+Policy number
+MOT-0000002
+Line of business
+Motor
+Named insured
+Dott. Alfio Leone
+Mailing address
+Stretto Gaetano, 53, 07049 Tresilico, Italy
+Policy period
+26/11/2023 to 25/11/2024
+Insured vehicle
+Peugeot 208 (2016, black) — reg HX-9830-IX
+Producing agent
+Alexandre Traore — Paris Assurances
+Annual premium
+€2,075.00
+Deductible
+€1,000.00",,VERIFIED,NONE_OBSERVED,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-002,MOT-0000004,Happy path,What is the deductible for this policy?,The documented deductible is €500 per occurrence.,"The deductible for this policy is €500.00 [Source 1], [Source 2], and [Source 3]. It is a deductible “per occurrence” [Source 1].",MOT-0000004-schedule.pdf; MOT-0000004-declarations.pdf,"Source 1 | MOT-0000004-schedule.pdf | Coverage Schedule — Policy MOT-0000004: Coverage Schedule — Policy MOT-0000004
+Named insured
+Mr. Stewart Montague
+Policy period
+04/12/2024 to 04/12/2025
+Annual premium
+€960.00
+Deductible (per occurrence)
+€500.00
+
+Source 2 | MOT-0000004-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€500.00
+Bodily injury — per accident
+€300,000.00
+€500.00
+Property damage
+€100,000.00
+€500.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 3 | MOT-0000004-declarations.pdf | Policy Declarations: Policy Declarations
+Policy number
+MOT-0000004
+Line of business
+Motor
+Named insured
+Mr. Stewart Montague
+Mailing address
+65 Fenning Street, K154PC8 Dermot Ville, Ireland
+Policy period
+04/12/2024 to 04/12/2025
+Insured vehicle
+Opel Astra (2008, red) — reg XD-9797-YI
+Producing agent
+Mr. Alister Kinnear — Hyman Insurance Group
+Annual premium
+€960.00
+Deductible
+€500.00",,VERIFIED,NONE_OBSERVED,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-004,MOT-0000004,Happy path,What are the bodily injury liability limits per accident?,The bodily injury liability limit is €300 000 per accident.,"The bodily injury liability limit per accident is €300,000.00 [Source 1]. The deductible for bodily injury per accident is €500.00 [Source 2].",MOT-0000004-declarations.pdf; MOT-0000004-schedule.pdf,"Source 1 | MOT-0000004-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000004-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€500.00
+Bodily injury — per accident
+€300,000.00
+€500.00
+Property damage
+€100,000.00
+€500.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",,VERIFIED,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-005,MOT-0000002,Happy path,What is the property damage liability limit?,The property damage liability limit is €100 000.,"The property damage liability limit is €100,000.00 [Source 1]. The property damage deductible is €1,000.00 [Source 2].",MOT-0000002-declarations.pdf; MOT-0000002-schedule.pdf,"Source 1 | MOT-0000002-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",,VERIFIED,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-006,MOT-0000004,Happy path,What is the property damage liability limit?,The property damage liability limit is €100 000.,"The property damage liability limit is €100,000.00 [Source 1]. The deductible for property damage is €500.00 [Source 2].",MOT-0000004-declarations.pdf; MOT-0000004-schedule.pdf,"Source 1 | MOT-0000004-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000004-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€500.00
+Bodily injury — per accident
+€300,000.00
+€500.00
+Property damage
+€100,000.00
+€500.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",,VERIFIED,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-007,MOT-0000002,Happy path,Does the contract mention collision coverage?,"Yes; collision is mentioned, but detailed collision terms are not established.","Yes, the contract mentions collision coverage, along with Other Than Collision (comprehensive) coverage [Source 1]. It states these coverages apply to a covered auto less the applicable deductible shown on the Declarations [Source 1].",MOT-0000002-contract.docx,"Source 1 | MOT-0000002-contract.docx | Insuring Agreement: Insuring Agreement
+We will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.
+Collision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations.",,VERIFIED,"missing_abstention; potential_out_of_scope_statement:comprehensive,covered,deductible",,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-008,MOT-0000004,Happy path,Does the contract mention comprehensive coverage?,"Yes; Other Than Collision (comprehensive) is mentioned, but detailed comprehensive terms are not established.","Yes, the contract mentions “Collision and Other Than Collision (comprehensive) coverages” [Source 1].",MOT-0000004-contract.docx,"Source 1 | MOT-0000004-contract.docx | Insuring Agreement: Insuring Agreement
+We will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.
+Collision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations.",,VERIFIED,missing_abstention,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-009,MOT-0000002,Happy path,Is new car replacement listed as an endorsement?,"Yes; NEW_CAR_REPL is listed, while eligibility conditions are not established.","Yes, NEW_CAR_REPL is listed as an endorsement [Source 1]. It replaces a totaled new vehicle with a comparable new model [Source 2]. The following endorsements amend the policy and form a part of it [Source 3].",MOT-0000002-declarations.pdf; MOT-0000002-endorsements.pdf,"Source 1 | MOT-0000002-declarations.pdf | Endorsements: Endorsements
+NEW_CAR_REPL
+The full policy contract, endorsement schedule, and coverage schedule are issued as separate forms
+under policy MOT-0000002.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 2 | MOT-0000002-endorsements.pdf | Description: Description
+NEW_CAR_REPL
+New Car Replacement — replaces a totaled new vehicle with a comparable new model.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 3 | MOT-0000002-endorsements.pdf | Endorsement Schedule — Policy MOT-0000002: Endorsement Schedule — Policy MOT-0000002
+Named insured: Dott. Alfio Leone. The following endorsements amend the policy and form a part of it.",,VERIFIED,missing_abstention,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-010,MOT-0000004,Happy path,Is GAP coverage included?,Yes; GAP is listed and described as paying the difference between actual cash value and loan balance.,"Yes, Loan/Lease Gap Coverage is included; it pays the difference between the auto's actual cash value and the loan balance [Source 1]. It is listed as an endorsement [Source 2]. 
+
+",MOT-0000004-endorsements.pdf; MOT-0000004-declarations.pdf,"Source 1 | MOT-0000004-endorsements.pdf | Description: Description
+GAP
+Loan/Lease Gap Coverage — pays the difference between the auto's actual cash value
+and the loan balance.
+NEW_CAR_REPL
+New Car Replacement — replaces a totaled new vehicle with a comparable new model.
+UM_UIM
+Uninsured/Underinsured Motorist — covers injury caused by an at-fault driver lacking
+adequate limits.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 2 | MOT-0000004-declarations.pdf | Endorsements: Endorsements
+GAP, NEW_CAR_REPL, UM_UIM
+The full policy contract, endorsement schedule, and coverage schedule are issued as separate forms
+under policy MOT-0000004.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",,VERIFIED,potential_out_of_scope_statement:endorsement,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED
+AC-011,MOT-0000004,Happy path,Is UM/UIM listed among the endorsements?,Yes; UM_UIM is listed and described.,"Yes, UM/UIM is listed among the endorsements [Source 1]. It is described as covering injury caused by an at-fault driver lacking adequate limits [Source 2].",MOT-0000004-declarations.pdf; MOT-0000004-endorsements.pdf,"Source 1 | MOT-0000004-declarations.pdf | Endorsements: Endorsements
+GAP, NEW_CAR_REPL, UM_UIM
+The full policy contract, endorsement schedule, and coverage schedule are issued as separate forms
+under policy MOT-0000004.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 2 | MOT-0000004-endorsements.pdf | Description: Description
+GAP
+Loan/Lease Gap Coverage — pays the difference between the auto's actual cash value
+and the loan balance.
+NEW_CAR_REPL
+New Car Replacement — replaces a totaled new vehicle with a comparable new model.
+UM_UIM
+Uninsured/Underinsured Motorist — covers injury caused by an at-fault driver lacking
+adequate limits.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",,VERIFIED,NONE_OBSERVED,,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED,UNREVIEWED

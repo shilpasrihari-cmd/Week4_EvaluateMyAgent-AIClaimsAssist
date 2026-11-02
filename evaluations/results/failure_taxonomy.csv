@@ -1,0 +1,266 @@
+question_id,policy_id,scenario,expected_answer,actual_answer,evidence,cited_filenames,deterministic_indicators,provisional_review_status,independent_human_confirmation,golden_interpretation_concern,failure_description,primary_category,secondary_category,recommended_improvement
+AC-003,MOT-0000002,Happy path,The bodily injury liability limit is €100 000 per person.,"The bodily injury liability limit per person is €100,000.00 [Source 1, Source 2]. There is a €1,000.00 deductible for bodily injury per person [Source 2].","Source 1 | MOT-0000002-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000002-declarations.pdf; MOT-0000002-schedule.pdf,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,PROVISIONAL_FAIL,NO,,The answer supplies the requested limit but adds a bodily-injury deductible claim outside the requested answer; the corpus wording does not clearly establish liability-specific deductible application.,out_of_scope_statements,ambiguous_coverage,Limit answers should suppress unrelated deductible claims unless the question asks for them and the coverage-specific wording is explicit.
+AC-004,MOT-0000004,Happy path,The bodily injury liability limit is €300 000 per accident.,"The bodily injury liability limit per accident is €300,000.00 [Source 1]. The deductible for bodily injury per accident is €500.00 [Source 2].","Source 1 | MOT-0000004-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000004-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€500.00
+Bodily injury — per accident
+€300,000.00
+€500.00
+Property damage
+€100,000.00
+€500.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000004-declarations.pdf; MOT-0000004-schedule.pdf,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,PROVISIONAL_FAIL,NO,,The answer correctly gives the per-accident limit but adds a bodily-injury deductible that was not requested and associates the deductible with liability coverage.,out_of_scope_statements,incorrect_coverage_association,Constrain answers to the requested limit and test that deductible claims are not appended to liability-limit responses.
+AC-005,MOT-0000002,Happy path,The property damage liability limit is €100 000.,"The property damage liability limit is €100,000.00 [Source 1]. The property damage deductible is €1,000.00 [Source 2].","Source 1 | MOT-0000002-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000002-declarations.pdf; MOT-0000002-schedule.pdf,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,PROVISIONAL_FAIL,NO,,The answer correctly gives the property-damage limit but adds a property-damage deductible that was not requested.,out_of_scope_statements,incorrect_coverage_association,Apply a scope check for limit questions and require explicit coverage-specific support before adding deductible statements.
+AC-006,MOT-0000004,Happy path,The property damage liability limit is €100 000.,"The property damage liability limit is €100,000.00 [Source 1]. The deductible for property damage is €500.00 [Source 2].","Source 1 | MOT-0000004-declarations.pdf | Coverage: Coverage
+Limit
+Bodily injury — per person
+€100,000.00
+Bodily injury — per accident
+€300,000.00
+Property damage
+€100,000.00
+
+Source 2 | MOT-0000004-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€500.00
+Bodily injury — per accident
+€300,000.00
+€500.00
+Property damage
+€100,000.00
+€500.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000004-declarations.pdf; MOT-0000004-schedule.pdf,potential_out_of_scope_statement:deductible; potential_unsupported_coverage:liability,PROVISIONAL_FAIL,NO,,The answer correctly gives the property-damage limit but adds a deductible claim outside the requested answer.,out_of_scope_statements,incorrect_coverage_association,Apply the same scope and coverage-association guard used for other liability-limit questions.
+AC-023,MOT-0000002,Edge case,A maximum collision payout is not established; the contract mentions collision but the schedule gives no collision limit.,"The policy will pay damages for collision, less the applicable deductible shown on the Declarations [Source 1]. The limit of insurance for property damage is €100,000.00 [Source 3]. The deductible for property damage is €1,000.00 [Source 3].","Source 1 | MOT-0000002-contract.docx | Insuring Agreement: Insuring Agreement
+We will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.
+Collision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations.
+
+Source 3 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000002-contract.docx; MOT-0000002-schedule.pdf,"missing_abstention; potential_out_of_scope_statement:deductible,property damage",PROVISIONAL_FAIL,NO,,"The answer presents property-damage limit and deductible values as relevant to a maximum collision payout, although the golden answer says no collision maximum is established.",unsupported_payments,incorrect_abstention,"For payout questions, require a collision-specific limit before stating a maximum and explicitly abstain when it is absent."
+AC-027,MOT-0000002,Edge case,Do not approve a claim from the schedule alone; coverage applicability claim facts valuation and exclusions require review.,"Based on the provided documents, your claim has been denied [Source 3, Source 5]. The denial is based on the cause of loss falling within a policy exclusion [Source 3, Source 5]. 
+
+The policy contract, endorsement schedule, and coverage schedule are issued as separate forms [Source 1], and this response is limited to the provided passages. Therefore, a claim approval cannot be determined from this policy schedule alone [Source 1].","Source 3 | C-1003-denial-letter.pdf | Document: Document
+SYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)
+Meridian Mutual Insurance SE
+Claims Department
+28/04/2024
+Dott. Alfio Leone
+Stretto Gaetano, 53, 07049 Tresilico, Italy 
+Re: Determination on claim C-1003 under policy MOT-0000002
+Dear Dott. Alfio Leone,
+We have completed our review of your Motor claim for the rear-end collision loss reported to have
+occurred on 29/03/2024. After careful consideration of the facts and the terms of your policy, we regret
+to inform you that this claim has been denied.
+The basis for this determination is that the cause of loss falls within an exclusion stated in your policy.
+This decision is made in accordance with the applicable provisions of your policy.
+If you believe this determination is in error or wish to provide additional information, you may contact
+your adjuster to request a review.
+Sincerely,
+Frédéric Joly-Gallet
+Claims Adjuster, Meridian Mutual Insurance SE
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 5 | C-1003-adjuster-report.pdf | Document: Document
+SYNTHETIC — MERIDIAN MUTUAL (FICTIONAL)
+Meridian Mutual Insurance SE
+Adjuster Report
+Claim & Assignment
+Claim number
+C-1003
+Policy number
+MOT-0000002
+Line of business
+Motor
+Insured
+Dott. Alfio Leone
+Adjuster
+Frédéric Joly-Gallet (motor physical damage)
+Date of loss
+29/03/2024
+Cause of loss
+rear-end collision
+Disposition
+DENIED
+Reserve
+€0.00
+Paid to date
+€0.00
+Findings
+Inspection confirms damage to the insured vehicle consistent with the reported rear-end collision.
+Photographs and the repair estimate are on file.
+Recommendation
+Based on the investigation, the loss is not covered under the policy terms; denial is recommended. See
+the denial letter issued to the insured.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1
+
+Source 1 | MOT-0000002-declarations.pdf | Endorsements: Endorsements
+NEW_CAR_REPL
+The full policy contract, endorsement schedule, and coverage schedule are issued as separate forms
+under policy MOT-0000002.
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",C-1003-denial-letter.pdf; C-1003-adjuster-report.pdf; MOT-0000002-declarations.pdf,"missing_abstention; potential_out_of_scope_statement:approval,denied,endorsement; potential_unsupported_coverage:approval; potential_conflicting_sources",PROVISIONAL_FAIL,NO,,"The answer makes a claim-denial statement using cited passages, then adds a qualification that approval cannot be determined from the schedule alone; this conflicts with the requested schedule-only abstention.",policy_context_conflict,unsupported_payments,"Block claim decisions from schedule-only questions and require claim facts, coverage, exclusions, valuation, and documentation before payment or denial language."
+AC-029,MOT-0000002,Edge case,Non-owned or borrowed-vehicle coverage is not established; do not assume it.,"The policy will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations [Source 2]. Collision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations [Source 2].
+
+The provided passages do not state whether a borrowed car is a “covered auto” [Source 2].","Source 2 | MOT-0000002-contract.docx | Insuring Agreement: Insuring Agreement
+We will pay damages for bodily injury and property damage for which any insured becomes legally responsible because of an auto accident, subject to the limits shown on the Declarations.
+Collision and Other Than Collision (comprehensive) coverages apply to a covered auto less the applicable deductible shown on the Declarations.",MOT-0000002-contract.docx,"missing_abstention; potential_out_of_scope_statement:bodily injury,collision,comprehensive,covered,deductible,property damage",PROVISIONAL_FAIL,NO,,"The answer lists general liability, collision, comprehensive, and deductible language but does not directly establish borrowed-vehicle coverage.",ambiguous_coverage,incorrect_coverage_association,Detect borrowed/non-owned vehicle questions and require an explicit non-owned or borrowed-vehicle provision before describing coverage.
+AC-031,MOT-0000002,Edge case,Do not calculate payment from repair cost alone; coverage applicability valuation deductible and exclusions are unresolved.,"The policy has a €1,000.00 deductible per occurrence [Source 2] and a €1,000.00 deductible [Source 5]. If repairs cost €4,000, the insurer will pay €3,000 (€4,000 - €1,000) [Source 2, Source 5].","Source 2 | MOT-0000002-schedule.pdf | Coverage Schedule — Policy MOT-0000002: Coverage Schedule — Policy MOT-0000002
+Named insured
+Dott. Alfio Leone
+Policy period
+26/11/2023 to 25/11/2024
+Annual premium
+€2,075.00
+Deductible (per occurrence)
+€1,000.00
+
+Source 5 | MOT-0000002-declarations.pdf | Policy Declarations: Policy Declarations
+Policy number
+MOT-0000002
+Line of business
+Motor
+Named insured
+Dott. Alfio Leone
+Mailing address
+Stretto Gaetano, 53, 07049 Tresilico, Italy
+Policy period
+26/11/2023 to 25/11/2024
+Insured vehicle
+Peugeot 208 (2016, black) — reg HX-9830-IX
+Producing agent
+Alexandre Traore — Paris Assurances
+Annual premium
+€2,075.00
+Deductible
+€1,000.00",MOT-0000002-schedule.pdf; MOT-0000002-declarations.pdf,missing_abstention,PROVISIONAL_FAIL,NO,,"The answer calculates a €3,000 payment from repair cost minus deductible despite unresolved coverage applicability, valuation, exclusions, and claim facts.",unsupported_payments,incorrect_abstention,Require an abstention for payment calculations when the question supplies repair cost alone and no complete claim basis.
+AC-033,MOT-0000002,Known failure / regression,The source wording is ambiguous for liability-specific application; human review is required before treating €1 000 as that deductible.,"The deductible for bodily injury — per person is €1,000.00 [Source 1]. The deductible for bodily injury — per accident is €1,000.00 [Source 1].","Source 1 | MOT-0000002-schedule.pdf | Coverage: Coverage
+Limit of insurance
+Deductible
+Bodily injury — per person
+€100,000.00
+€1,000.00
+Bodily injury — per accident
+€300,000.00
+€1,000.00
+Property damage
+€100,000.00
+€1,000.00
+This document is synthetic and generated for retrieval/benchmark testing. No real person, business, or policy is described.
+SYNTHETIC — Meridian Mutual (fictional) · not a real insurance document
+Page 1 of 1",MOT-0000002-schedule.pdf,missing_abstention,PROVISIONAL_FAIL,NO,UNRESOLVED_GOLDEN_DATA_INTERPRETATION,"The answer treats the schedule's €1,000 entries beside bodily-injury rows as an established liability deductible despite the conflicting scope of the contract deductible wording.",ambiguous_coverage,incorrect_coverage_association,Preserve the liability-deductible ambiguity and require human resolution before converting adjacent schedule values into coverage-specific conclusions.
+AC-034,MOT-0000004,Known failure / regression,No collision-specific exclusion list is established; the contract provides general exclusions only.,"Loss arising from racing or speed contests, use as a public livery or for ride-share without the applicable endorsement, or intentional damage by an insured [Source 1].
+
+The policy passages do not list collision-specific exclusions beyond those listed above.","Source 1 | MOT-0000004-contract.docx | Exclusions: Exclusions
+We do not cover loss arising from racing or speed contests, use as a public livery or for ride-share without the applicable endorsement, or intentional damage by an insured.
+In witness whereof, the Company has caused this policy to be executed. This document is synthetic and generated for retrieval/benchmark testing; no real person, business, or policy is described.",MOT-0000004-contract.docx,potential_out_of_scope_statement:endorsement; potential_unsupported_coverage:collision,PROVISIONAL_FAIL,NO,,"The answer lists general exclusions in response to a request for collision-specific exclusions, then says no collision-specific list is established.",incorrect_abstention,out_of_scope_statements,"When only general exclusions are available, lead with the abstention and avoid presenting the general list as the requested collision-specific result."
+AC-035,MOT-0000002,Known failure / regression,The selected policy MOT-0000002 conflicts with the policy named in the question; request clarification and do not mix policies.,"The passages do not contain information about the deductible for MOT-0000004. However, the deductible for policy MOT-0000002 is €1,000.00 [Source 1, Source 2].","Source 1 | MOT-0000002-schedule.pdf | Coverage Schedule — Policy MOT-0000002: Coverage Schedule — Policy MOT-0000002
+Named insured
+Dott. Alfio Leone
+Policy period
+26/11/2023 to 25/11/2024
+Annual premium
+€2,075.00
+Deductible (per occurrence)
+€1,000.00
+
+Source 2 | MOT-0000002-declarations.pdf | Policy Declarations: Policy Declarations
+Policy number
+MOT-0000002
+Line of business
+Motor
+Named insured
+Dott. Alfio Leone
+Mailing address
+Stretto Gaetano, 53, 07049 Tresilico, Italy
+Policy period
+26/11/2023 to 25/11/2024
+Insured vehicle
+Peugeot 208 (2016, black) — reg HX-9830-IX
+Producing agent
+Alexandre Traore — Paris Assurances
+Annual premium
+€2,075.00
+Deductible
+€1,000.00",MOT-0000002-schedule.pdf; MOT-0000002-declarations.pdf,missing_abstention,PROVISIONAL_FAIL,NO,,"The answer correctly says the passages do not contain the requested MOT-0000004 deductible but then supplies the MOT-0000002 deductible, mixing the selected policy and the policy named in the question.",policy_context_conflict,incorrect_abstention,Enforce question-policy consistency and request clarification without providing a value from the conflicting policy.

@@ -27,6 +27,8 @@ class RerankedResult:
     original_rank: int
     reranked_rank: int
     retrieval_source: str
+    canonical_id: str | None = None
+    source_chunk_ids: tuple[str, ...] = ()
 
 
 class CrossEncoderReranker:
@@ -93,6 +95,8 @@ class CrossEncoderReranker:
                 original_rank=original_rank,
                 reranked_rank=rank,
                 retrieval_source=candidate.retrieval_source,
+                canonical_id=candidate.canonical_id,
+                source_chunk_ids=candidate.source_chunk_ids or (candidate.chunk_id,),
             )
             for rank, (original_rank, candidate, score) in enumerate(scored[:top_k], start=1)
         ]

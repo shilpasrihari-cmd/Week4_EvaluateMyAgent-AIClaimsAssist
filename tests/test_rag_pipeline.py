@@ -73,6 +73,7 @@ def test_grounded_generation_filters_policy_and_preserves_sources() -> None:
     assert result["answer"].startswith("The deductible is $500")
     assert result["citations"][0]["source_label"] == "Source 1"
     assert result["citations"][0]["chunk_id"] == "chunk-1"
+    assert result["citations"][0]["source_chunk_ids"] == ["chunk-1"]
     assert result["retrieved_sources"][0]["policy_id"] == "MOT-0000002"
     assert retriever.calls[0][1]["top_k"] == 10
     assert retriever.calls[0][1]["policy_id"] == "MOT-0000002"
@@ -109,6 +110,89 @@ def test_deductible_answer_removes_unrelated_coverage_claim() -> None:
     assert "bodily injury" not in result["answer"].lower()
     assert "property damage" not in result["answer"].lower()
     assert result["missing_information"] == []
+
+
+def test_generic_deductible_keeps_supported_schedule_answer_without_category_claims() -> None:
+    passage = _passage()
+    client = FakeClient(
+        "The deductible for bodily injury per person is $500. [Source 1]. "
+        "The deductible for property damage is $500. [Source 1]."
+    )
+    pipeline = RAGPipeline(FakeRetriever(["candidate"]), FakeReranker([passage]), client=client)
+
+    result = pipeline.answer("What is the deductible?", policy_id="MOT-0000002")
+
+    assert result["answer"] == "The deductible is $500. [Source 1]"
+    assert "bodily injury" not in result["answer"].lower()
+    assert result["citations"][0]["chunk_id"] == "chunk-1"
+
+
+def test_liability_limit_removes_unsolicited_deductible_without_losing_limit_citation() -> None:
+    passage = _passage()
+    client = FakeClient(
+        "The bodily injury liability limit per person is $100,000. [Source 1]. "
+        "The deductible for bodily injury per person is $500. [Source 1]."
+    )
+    pipeline = RAGPipeline(FakeRetriever(["candidate"]), FakeReranker([passage]), client=client)
+
+    result = pipeline.answer(
+        "What are the bodily injury liability limits per person?",
+        policy_id="MOT-0000002",
+    )
+
+    assert "bodily injury liability limit per person is $100,000" in result["answer"]
+    assert "deductible" not in result["answer"].lower()
+    assert result["answer"].count("[Source 1]") >= 1
+    assert [citation["source_label"] for citation in result["citations"]] == ["Source 1"]
+
+
+def test_property_limit_removes_unsolicited_deductible_claim() -> None:
+    passage = _passage()
+    client = FakeClient(
+        "The property damage liability limit is $100,000. [Source 1]. "
+        "The property damage deductible is $500. [Source 1]."
+    )
+    pipeline = RAGPipeline(FakeRetriever(["candidate"]), FakeReranker([passage]), client=client)
+
+    result = pipeline.answer("What is the property damage liability limit?", policy_id="MOT-0000002")
+
+    assert "property damage liability limit" in result["answer"].lower()
+    assert "deductible" not in result["answer"].lower()
+    assert result["citations"][0]["policy_id"] == "MOT-0000002"
+
+
+def test_liability_deductible_keeps_requested_category_and_removes_other_category() -> None:
+    passage = _passage()
+    client = FakeClient(
+        "The bodily injury deductible is $500. [Source 1]. "
+        "The property damage deductible is $500. [Source 1]."
+    )
+    pipeline = RAGPipeline(FakeRetriever(["candidate"]), FakeReranker([passage]), client=client)
+
+    result = pipeline.answer("What is the bodily injury deductible?", policy_id="MOT-0000002")
+
+    assert "bodily injury" in result["answer"].lower()
+    assert "property damage" not in result["answer"].lower()
+
+
+def test_combined_citations_map_each_source_and_reject_fabricated_labels() -> None:
+    first = _passage("chunk-1")
+    second = _passage("chunk-2")
+    citations, invalid = RAGPipeline.validate_citations(
+        "Supported [Source 1, Source 2] and fabricated [Source 9].", [first, second]
+    )
+
+    assert [citation["chunk_id"] for citation in citations] == ["chunk-1", "chunk-2"]
+    assert invalid == ["Source 9"]
+
+
+def test_missing_evidence_returns_abstention_without_citations() -> None:
+    pipeline = RAGPipeline(FakeRetriever([]), FakeReranker([]), client=FakeClient("unused"))
+
+    result = pipeline.answer("What is covered?", policy_id="MOT-0000002")
+
+    assert result["answer"].startswith("I do not have enough")
+    assert result["citations"] == []
 
 
 def test_source_labels_map_to_real_retrieved_chunks() -> None:

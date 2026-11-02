@@ -1,0 +1,132 @@
+{
+  "dataset": {
+    "total": 40,
+    "verified": 37,
+    "needs_review": 3,
+    "question_ids": [
+      "AC-001",
+      "AC-002",
+      "AC-003",
+      "AC-004",
+      "AC-005",
+      "AC-006",
+      "AC-007",
+      "AC-008",
+      "AC-009",
+      "AC-010",
+      "AC-011",
+      "AC-012",
+      "AC-013",
+      "AC-014",
+      "AC-015",
+      "AC-016",
+      "AC-017",
+      "AC-018",
+      "AC-019",
+      "AC-020",
+      "AC-021",
+      "AC-022",
+      "AC-023",
+      "AC-024",
+      "AC-025",
+      "AC-026",
+      "AC-027",
+      "AC-028",
+      "AC-029",
+      "AC-030",
+      "AC-031",
+      "AC-032",
+      "AC-033",
+      "AC-034",
+      "AC-035",
+      "AC-036",
+      "AC-037",
+      "AC-038",
+      "AC-039",
+      "AC-040"
+    ]
+  },
+  "execution_success": {
+    "numerator": 40,
+    "denominator": 40,
+    "rate": 1.0
+  },
+  "policy_isolation": {
+    "numerator": 40,
+    "denominator": 40,
+    "rate": 1.0
+  },
+  "citation_reference_validity": {
+    "numerator": 84,
+    "denominator": 84,
+    "rate": 1.0
+  },
+  "citation_coverage": {
+    "numerator": 40,
+    "denominator": 40,
+    "rate": 1.0
+  },
+  "verified_abstention": {
+    "numerator": 2,
+    "denominator": 14,
+    "rate": 0.14285714285714285,
+    "interpretation": "explicit abstention indicator only; not a semantic correctness judgment"
+  },
+  "recall_at_5": {
+    "numerator": 0,
+    "denominator": 0,
+    "rate": null,
+    "reason": "No verified relevant chunk-ID labels are present in the golden dataset."
+  },
+  "latency_seconds": {
+    "numerator": 40,
+    "mean": 1.2725734499999999,
+    "median": 1.246853,
+    "p95": 1.579888
+  },
+  "error_rate": {
+    "numerator": 0,
+    "denominator": 40,
+    "rate": 0.0,
+    "by_error": {}
+  },
+  "missing_citations": {
+    "numerator": 0,
+    "denominator": 40,
+    "question_ids": []
+  },
+  "review_cases": [
+    "AC-021",
+    "AC-032",
+    "AC-033"
+  ],
+  "configuration": {
+    "environment_file": "C:\\ShilpiStuff\\Projects\\week4\\EvaluateMyAgent-AIClaimsAssist\\.env",
+    "pinecone_index": "aiclaimsassist-vectors",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "pinecone_api_key_present": true,
+    "nebius_api_key_present": true,
+    "retrieval_mode": "hybrid",
+    "chunking_strategy": "section_aware",
+    "rrf_k": 60,
+    "retrieval_top_k": 10,
+    "passage_top_k": 5,
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+    "llm_model": "google/gemma-3-27b-it",
+    "policy_filtering": "explicit policy_id per question",
+    "pinecone": {
+      "name": "aiclaimsassist-vectors",
+      "dimension": 384,
+      "metric": "cosine",
+      "ready": "IndexStatus(ready=True, state='Ready')",
+      "namespace_vector_counts": {
+        "section-aware": 32,
+        "fixed-size": 10
+      }
+    },
+    "git": {
+      "commit": "3646874c2db65ec67e31c798f746c7e43a05608e",
+      "working_tree_dirty": true
+    }
+  }
+}

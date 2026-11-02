@@ -17,10 +17,8 @@ from retrieval.reranker import CrossEncoderReranker, RerankedResult
 
 
 DEFAULT_MODEL = "google/gemma-3-27b-it"
-_CITATION_PATTERN = re.compile(
-    r"\[Source\s+(?P<source_number>\d+)\]",
-    re.IGNORECASE,
-)
+_BRACKET_CITATION_PATTERN = re.compile(r"\[([^\]]*)\]")
+_CITATION_LABEL_PATTERN = re.compile(r"Source\s+(?P<source_number>\d+)", re.IGNORECASE)
 
 
 class RAGPipeline:
@@ -50,9 +48,11 @@ class RAGPipeline:
         return OpenAI(api_key=api_key, base_url=base_url)
 
     @staticmethod
-    def _source(result: RerankedResult) -> dict[str, str]:
+    def _source(result: RerankedResult) -> dict[str, Any]:
         return {
             "chunk_id": result.chunk_id,
+            "canonical_id": result.canonical_id,
+            "source_chunk_ids": list(result.source_chunk_ids or (result.chunk_id,)),
             "policy_id": result.policy_id,
             "source_filename": result.source_filename,
             "section_heading": result.section_heading,
@@ -95,6 +95,8 @@ class RAGPipeline:
                 original_rank=rank,
                 reranked_rank=rank,
                 retrieval_source=candidate.retrieval_source,
+                canonical_id=candidate.canonical_id,
+                source_chunk_ids=candidate.source_chunk_ids or (candidate.chunk_id,),
             )
             for rank, candidate in enumerate(candidates[:5], start=1)
         ]
@@ -135,21 +137,22 @@ class RAGPipeline:
         citations: list[dict[str, str]] = []
         invalid: list[str] = []
         seen: set[str] = set()
-        for match in _CITATION_PATTERN.finditer(answer):
-            source_number = int(match.group("source_number"))
-            source_label = f"Source {source_number}"
-            if source_number < 1 or source_number > len(passage_list):
-                invalid.append(source_label)
-                continue
-            passage = passage_list[source_number - 1]
-            if passage.chunk_id in seen:
-                continue
-            citation = {"source_label": source_label, **RAGPipeline._source(passage)}
-            if not citation["chunk_id"]:
-                invalid.append(source_label)
-                continue
-            seen.add(passage.chunk_id)
-            citations.append(citation)
+        for bracket_content in _BRACKET_CITATION_PATTERN.findall(answer):
+            for match in _CITATION_LABEL_PATTERN.finditer(bracket_content):
+                source_number = int(match.group("source_number"))
+                source_label = f"Source {source_number}"
+                if source_number < 1 or source_number > len(passage_list):
+                    invalid.append(source_label)
+                    continue
+                passage = passage_list[source_number - 1]
+                if passage.chunk_id in seen:
+                    continue
+                citation = {"source_label": source_label, **RAGPipeline._source(passage)}
+                if not citation["chunk_id"]:
+                    invalid.append(source_label)
+                    continue
+                seen.add(passage.chunk_id)
+                citations.append(citation)
         return citations, invalid
 
     @staticmethod
@@ -157,14 +160,75 @@ class RAGPipeline:
         query_lower = query.lower()
         answer_sentences = re.split(r"(?<=[.!?])\s+", answer)
         if "deductible" not in query_lower:
+            # Limit and coverage questions should not inherit a deductible claim
+            # from an adjacent table row or a related passage. Keep this
+            # question-driven guard general: it applies to any query that does
+            # not request deductible information and leaves the citation parser
+            # and retrieved source mapping unchanged.
+            filtered = [
+                sentence
+                for sentence in answer_sentences
+                if "deductible" not in sentence.lower()
+            ]
+            filtered_answer = " ".join(filtered).strip()
+            return filtered_answer, filtered_answer != answer
+        requested_terms = {
+            term
+            for term in ("bodily injury", "property damage", "collision", "comprehensive")
+            if term in query_lower
+        }
+        if not requested_terms:
+            deductible_sentences = [
+                sentence for sentence in answer_sentences if "deductible" in sentence.lower()
+            ]
+            amounts = {
+                tuple(
+                    re.findall(
+                        r"\d+(?:[,.]\d+)*",
+                        re.sub(r"\[[^\]]*\]", "", sentence).replace(" ", ""),
+                    )
+                )
+                for sentence in deductible_sentences
+            }
+            if deductible_sentences and len(amounts) == 1:
+                generic = re.sub(
+                    r"\s+for\s+(?:bodily injury|property damage)[^.!?]*?(?=\s+is\b)",
+                    "",
+                    deductible_sentences[0],
+                    flags=re.IGNORECASE,
+                ).strip()
+                citations = " ".join(
+                    f"[{label}]"
+                    for label in dict.fromkeys(RAGPipeline._citation_labels(answer))
+                    if f"[{label}]" not in generic
+                )
+                if citations:
+                    generic = f"{generic.rstrip()} {citations}"
+                return generic, generic != answer
             return answer, False
-        unrelated_terms = ("bodily injury", "property damage")
+
+        unrelated_terms = {
+            "bodily injury",
+            "property damage",
+            "collision",
+            "comprehensive",
+        } - requested_terms
         filtered = [
             sentence
             for sentence in answer_sentences
             if not any(term in sentence.lower() for term in unrelated_terms)
         ]
         return " ".join(filtered).strip(), len(filtered) != len(answer_sentences)
+
+    @staticmethod
+    def _citation_labels(answer: str) -> list[str]:
+        labels: list[str] = []
+        for bracket_content in _BRACKET_CITATION_PATTERN.findall(answer):
+            labels.extend(
+                f"Source {match.group('source_number')}"
+                for match in _CITATION_LABEL_PATTERN.finditer(bracket_content)
+            )
+        return labels
 
     @staticmethod
     def _missing_information(answer: str) -> list[str]:
@@ -189,7 +253,14 @@ class RAGPipeline:
         strategy: str = "section_aware",
         retrieval_mode: str = "hybrid",
         reranking_enabled: bool = True,
+        trace: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
+        if trace is not None:
+            trace["pipeline"] = {
+                "retrieval_mode": retrieval_mode,
+                "chunking_strategy": strategy,
+                "reranking_enabled": reranking_enabled,
+            }
         if retrieval_mode not in {"hybrid", "semantic_only", "keyword_only"}:
             return {
                 **self._empty_response(
@@ -247,6 +318,8 @@ class RAGPipeline:
             }
 
         if not reranked:
+            if trace is not None:
+                trace["fallback_status"] = "no_reranked_passages"
             return {
                 **self._empty_response(
                     self.model_name,
@@ -259,6 +332,11 @@ class RAGPipeline:
             }
 
         sources = [self._source(result) for result in reranked]
+        if trace is not None:
+            trace["ordered_source_mapping"] = {
+                f"Source {number}": self._source(result)
+                for number, result in enumerate(reranked, start=1)
+            }
         prompt = self.build_prompt(query, reranked)
         try:
             response = self.client.chat.completions.create(
@@ -272,6 +350,9 @@ class RAGPipeline:
                 ],
             )
         except Exception as exc:
+            if trace is not None:
+                trace["fallback_status"] = "generation_api_failure"
+                trace["generation_error_type"] = type(exc).__name__
             return {
                 "answer": "The grounded answer service is unavailable.",
                 "citations": [],
@@ -286,16 +367,37 @@ class RAGPipeline:
                 "error": type(exc).__name__,
             }
 
-        answer = response.choices[0].message.content or ""
-        answer, _ = self._remove_unrelated_deductible_claim(query, answer)
+        raw_answer = response.choices[0].message.content or ""
+        answer = raw_answer
+        answer, removed_unrelated_claim = self._remove_unrelated_deductible_claim(query, answer)
+        if trace is not None:
+            trace["raw_llm_output"] = raw_answer
+            trace["post_filter_answer"] = answer
+            trace["unrelated_deductible_claim_removed"] = removed_unrelated_claim
+            trace["citation_labels_in_answer"] = self._citation_labels(answer)
         citations, invalid = self.validate_citations(answer, reranked)
         missing = self._missing_information(answer)
+        if trace is not None:
+            parser_labels = self._citation_labels(answer)
+            accepted_labels = [citation["source_label"] for citation in citations]
+            rejected_labels = sorted(set(parser_labels) - set(accepted_labels))
+            rejected_labels.extend(label for label in invalid if label not in rejected_labels)
+            trace["citation_validation"] = {
+                "parser_matched_labels": parser_labels,
+                "accepted_labels": accepted_labels,
+                "rejected_labels": sorted(set(rejected_labels)),
+                "invalid_labels": invalid,
+            }
         if invalid:
             missing.append("The model returned unsupported citation references.")
         if not citations:
             missing.append("No valid policy citations were returned for the answer.")
         if invalid or not citations:
+            if trace is not None:
+                trace["fallback_status"] = "suppressed_for_citations"
             answer = "I cannot provide a verifiable grounded answer from the retrieved evidence."
+        elif trace is not None:
+            trace["fallback_status"] = "none"
 
         return {
             "answer": answer,

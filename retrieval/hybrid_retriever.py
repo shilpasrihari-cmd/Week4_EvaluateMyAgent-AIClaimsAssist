@@ -4,12 +4,45 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import hashlib
+import re
+import unicodedata
 
 from .bm25_retriever import BM25Result, BM25Retriever
 from .semantic_retriever import SemanticResult, SemanticRetriever
 
 
 RRF_K = 60
+
+
+def _normalized_identity_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value).casefold()
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
+def canonical_chunk_identity(
+    policy_id: str,
+    source_filename: str,
+    section_heading: str,
+    text: str,
+) -> str:
+    """Build an identity only from verified equivalent chunk metadata.
+
+    Full text is included after whitespace/case normalization, so chunks with
+    different boundaries or substantive content do not merge merely because
+    their document IDs look similar.
+    """
+
+    components = "\x1f".join(
+        (
+            policy_id.upper(),
+            _normalized_identity_text(source_filename),
+            _normalized_identity_text(section_heading),
+            _normalized_identity_text(text),
+        )
+    )
+    digest = hashlib.sha256(components.encode("utf-8")).hexdigest()[:16]
+    return f"canonical:{digest}"
 
 
 @dataclass(frozen=True)
@@ -24,6 +57,8 @@ class HybridResult:
     score_type: str
     semantic_score: float | None = None
     bm25_score: float | None = None
+    canonical_id: str | None = None
+    source_chunk_ids: tuple[str, ...] = ()
 
 
 class HybridRetriever:
@@ -53,6 +88,9 @@ class HybridRetriever:
 
     @staticmethod
     def _semantic_result(result: SemanticResult) -> HybridResult:
+        canonical_id = canonical_chunk_identity(
+            result.policy_id, result.source_filename, result.section_heading, result.text
+        )
         return HybridResult(
             chunk_id=result.chunk_id,
             policy_id=result.policy_id,
@@ -63,10 +101,15 @@ class HybridRetriever:
             ranking_score=result.semantic_score,
             score_type="semantic_similarity",
             semantic_score=result.semantic_score,
+            canonical_id=canonical_id,
+            source_chunk_ids=(result.chunk_id,),
         )
 
     @staticmethod
     def _keyword_result(result: BM25Result) -> HybridResult:
+        canonical_id = canonical_chunk_identity(
+            result.policy_id, result.source_filename, result.section_heading, result.text
+        )
         return HybridResult(
             chunk_id=result.chunk_id,
             policy_id=result.policy_id,
@@ -77,6 +120,8 @@ class HybridRetriever:
             ranking_score=result.score,
             score_type="bm25_score",
             bm25_score=result.score,
+            canonical_id=canonical_id,
+            source_chunk_ids=(result.chunk_id,),
         )
 
     def search(
@@ -120,15 +165,45 @@ class HybridRetriever:
 
         fused: dict[str, dict] = {}
         for rank, result in enumerate(semantic_results, start=1):
-            entry = fused.setdefault(result.chunk_id, {"result": result, "rrf": 0.0, "semantic": None, "bm25": None})
+            canonical_id = canonical_chunk_identity(
+                result.policy_id, result.source_filename, result.section_heading, result.text
+            )
+            entry = fused.setdefault(
+                canonical_id,
+                {
+                    "result": result,
+                    "rrf": 0.0,
+                    "semantic": None,
+                    "bm25": None,
+                    "canonical_id": canonical_id,
+                    "source_chunk_ids": [],
+                },
+            )
             entry["rrf"] += 1 / (RRF_K + rank)
             entry["semantic"] = result.semantic_score
+            if result.chunk_id not in entry["source_chunk_ids"]:
+                entry["source_chunk_ids"].append(result.chunk_id)
         for rank, result in enumerate(keyword_results, start=1):
-            entry = fused.setdefault(result.chunk_id, {"result": result, "rrf": 0.0, "semantic": None, "bm25": None})
+            canonical_id = canonical_chunk_identity(
+                result.policy_id, result.source_filename, result.section_heading, result.text
+            )
+            entry = fused.setdefault(
+                canonical_id,
+                {
+                    "result": result,
+                    "rrf": 0.0,
+                    "semantic": None,
+                    "bm25": None,
+                    "canonical_id": canonical_id,
+                    "source_chunk_ids": [],
+                },
+            )
             entry["rrf"] += 1 / (RRF_K + rank)
             entry["bm25"] = result.score
+            if result.chunk_id not in entry["source_chunk_ids"]:
+                entry["source_chunk_ids"].append(result.chunk_id)
 
-        ordered = sorted(fused.values(), key=lambda entry: (-entry["rrf"], entry["result"].chunk_id))
+        ordered = sorted(fused.values(), key=lambda entry: (-entry["rrf"], entry["canonical_id"]))
         output: list[HybridResult] = []
         for entry in ordered[:top_k]:
             result = entry["result"]
@@ -144,6 +219,8 @@ class HybridRetriever:
                     score_type="rrf_score",
                     semantic_score=entry["semantic"],
                     bm25_score=entry["bm25"],
+                    canonical_id=entry["canonical_id"],
+                    source_chunk_ids=tuple(entry["source_chunk_ids"]),
                 )
             )
         return output
